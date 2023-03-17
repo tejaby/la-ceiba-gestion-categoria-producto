@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import FormCrearProducto from "../components/form/formCrearProducto";
 import { obtenerProductos } from "../services/productos";
 import ModeloTabla from "../components/createTable/modeloTabla";
+import moment from "moment";
 
 function Categoria() {
   const [productos, setProductos] = useState([]);
@@ -20,16 +21,42 @@ function Categoria() {
         Header: "Gestion Productos",
         columns: [
           {
-            Header: "Categoria",
-            accessor: "category",
+            Header: "Nombre",
+            accessor: "nombre",
           },
           {
             Header: "Descripcion",
             accessor: "description",
           },
           {
-            Header: "Accion",
-            accessor: "CategoryID",
+            Header: "Fecha_ingreso",
+            accessor: (d) => {
+              return moment(d.expiration_date).format("DD/MM/YYYY");
+            },
+          },
+          {
+            Header: "Proveedor",
+            accessor: "proveedor",
+          },
+          {
+            Header: "Nit_proveedor",
+            accessor: "nit_proveedor",
+          },
+          {
+            Header: "Cantidad",
+            accessor: "cantidad",
+          },
+          {
+            Header: "Existencia",
+            accessor: "existencia",
+          },
+          {
+            Header: "Precio_costo",
+            accessor: "precio_costo",
+          },
+          {
+            Header: "Precio_venta",
+            accessor: "precio_venta",
           },
         ],
       },
