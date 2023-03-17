@@ -10,6 +10,7 @@ export const obtenerProductos = async (req, res) => {
     });
   }
 };
+
 export const obtenerProducto = async (req, res) => {
   const id = req.params.id;
   try {
@@ -32,6 +33,48 @@ export const obtenerProducto = async (req, res) => {
   }
 };
 
-export const crearProducto = (req, res) => {
-  res.send("producto");
+export const crearProducto = async (req, res) => {
+  const {
+    nombre,
+    descripcion,
+    fecha_ingreso,
+    proveedor,
+    nit_proveedor,
+    cantidad,
+    existencia,
+    precio_costo,
+    precio_venta,
+  } = req.body;
+  try {
+    const [rows] = await pool.query(
+      `INSERT INTO producto (nombre, descripcion, fecha_ingreso, proveedor, nit_proveedor, cantidad, existencia, precio_costo, precio_venta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        nombre,
+        descripcion,
+        fecha_ingreso,
+        proveedor,
+        nit_proveedor,
+        cantidad,
+        existencia,
+        precio_costo,
+        precio_venta,
+      ]
+    );
+    res.send({
+      id_producto: rows.insertId,
+      nombre,
+      descripcion,
+      fecha_ingreso,
+      proveedor,
+      nit_proveedor,
+      cantidad,
+      existencia,
+      precio_costo,
+      precio_venta,
+    });
+  } catch (e) {
+    return res.status(500).json({
+      message: "Algo va mal",
+    });
+  }
 };

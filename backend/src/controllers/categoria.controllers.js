@@ -33,6 +33,21 @@ export const obtenerCategoria = async (req, res) => {
   }
 };
 
-export const crearCategoria = (req, res) => {
-  res.send("categoria");
+export const crearCategoria = async (req, res) => {
+  const { categoria, descripcion } = req.body;
+  try {
+    const [rows] = await pool.query(
+      `INSERT INTO categoria (categoria, descripcion) VALUES (?, ?)`,
+      [categoria, descripcion]
+    );
+    res.send({
+      id_categoria: rows.insertId,
+      categoria,
+      descripcion,
+    });
+  } catch (e) {
+    return res.status(500).json({
+      message: "Algo va mal",
+    });
+  }
 };
