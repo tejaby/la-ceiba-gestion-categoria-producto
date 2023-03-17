@@ -1,3 +1,14 @@
+import axios from "axios";
+
+export const getProductos = async () => {
+  try {
+    const req = await axios.get(`http://localhost:3000/api/producto`);
+    return req
+  } catch (e) {
+    console.log(e)
+  }
+};
+
 export const obtenerProductos = async () => {
   try {
     const req = await fetch("http://localhost:3000/api/producto");

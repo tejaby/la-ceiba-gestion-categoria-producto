@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding-top: 10px;
+}
+
+.input {
+  padding: 0.3em;
+  border: none;
+  outline: none;
+  border: 1px solid #000;
+  box-shadow: 0.1em 0.1em;
+  border-radius: 0.4em;
+  background: #c1e3ff;
+  font-size: 1.1rem;
+}
+
+.submit {
+  background: #c1e3ff;
+  padding: 0.6em .9em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 1px solid #000;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+}
+
+.submit:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+  background: #b0d6f7;
+}
+
+.submit:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}

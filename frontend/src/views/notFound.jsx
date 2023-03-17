@@ -1,5 +1,11 @@
-function NotFound() {
-  return <div>notFound</div>;
-}
+// import NotFound from "../components/notFound/notFound";
 
-export default NotFound;
+// function NotFound() {
+//   return (
+//     <>
+//       <NotFound />
+//     </>
+//   );
+// }
+
+// export default NotFound;

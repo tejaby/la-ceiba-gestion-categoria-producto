@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import {} from 'animate.css'
 import "./style.css";
 
 function Navbar() {
@@ -30,17 +31,17 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav ms-lg-auto">
-            <li className="nav-item">
+            <li className="nav-item nav-item animate__animated animate__zoomIn">
               <NavLink to={"/categoria"} className={"link"}>
                 Categorias
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item nav-item animate__animated animate__zoomIn">
               <NavLink to={"/producto"} className={"link"}>
                 Productos
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item animate__animated animate__zoomIn">
               <NavLink to={"/about"} className={"link"}>
                 About
               </NavLink>

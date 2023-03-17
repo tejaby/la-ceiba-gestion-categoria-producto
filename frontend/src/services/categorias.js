@@ -1,7 +1,10 @@
+import axios from "axios";
+
 export const obtenerCategorias = async () => {
   try {
     const req = await fetch("http://localhost:3000/api/categoria");
     const res = await req.json();
+    console.log(res)
     return res;
   } catch (e) {
     return [];
@@ -21,11 +24,7 @@ export const obtenerCategoria = async (id) => {
 
 export const crearCategoria = async (data) => {
   try {
-    const req = await fetch("http://localhost:3000/api/categoria", {
-      method: "POST",
-      body: data,
-    });
-    const res = await req.json();
+    const res = await axios.post("http://localhost:3000/api/categoria", data);
     return res;
   } catch (e) {
     console.log(e);
