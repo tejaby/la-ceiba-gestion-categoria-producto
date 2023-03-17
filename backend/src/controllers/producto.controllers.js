@@ -1,3 +1,5 @@
+import pool from '../db.js'
+
 export const obtenerProducto = (req, res) => {
   res.send("producto");
 };

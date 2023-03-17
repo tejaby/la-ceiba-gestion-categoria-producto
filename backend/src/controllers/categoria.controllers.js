@@ -1,3 +1,5 @@
+import pool from '../db.js'
+
 export const obtenerCategoria = (req, res) => {
     res.send("categoria")
 }
