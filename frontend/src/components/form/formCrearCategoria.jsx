@@ -1,10 +1,25 @@
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import { crearCategoria } from "../../services/categorias";
-import './style.css'
+import "./style.css";
+
+const schema = yup
+  .object({
+    categoria: yup.string().required(),
+    descripcion: yup.string().required(),
+  })
+  .required();
 
 function FormCrearCategoria() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = async (data) => {
     const { categoria, descripcion } = data;
@@ -14,8 +29,10 @@ function FormCrearCategoria() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={"form"}>
-      <input className="input" {...register("categoria", { required: true, maxLength: 50 })} />
-      <input className="input" {...register("descripcion", { required: true, maxLength: 100 })} />
+      <input {...register("categoria")} className={"input"} />
+      <p>{errors.categoria?.message}</p>
+      <input {...register("descripcion")} className={"input"} />
+      <p>{errors.descripcion?.message}</p>
       <input className="submit" type="submit" />
     </form>
   );

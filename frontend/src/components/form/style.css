@@ -7,6 +7,16 @@
   padding-top: 10px;
 }
 
+.formtwo{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  padding-top: 10px;
+}
+
 .input {
   padding: 0.3em;
   border: none;
@@ -37,4 +47,9 @@
 .submit:active {
   transform: translate(0.05em, 0.05em);
   box-shadow: 0.05em 0.05em;
+}
+
+.cont .input{
+  display: flex;
+  gap: 5px;
 }

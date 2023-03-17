@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import FormCrearProducto from "../components/form/formCrearProducto";
 import { obtenerProductos } from "../services/productos";
-import ModeloTabla from "../components/createTable/tablaCategoria";
+import ModeloTabla from "../components/createTable/modeloTabla";
 
 function Categoria() {
   const [productos, setProductos] = useState([]);
