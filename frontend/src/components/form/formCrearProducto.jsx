@@ -2,14 +2,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { crearCategoria } from "../../services/categorias";
+import { crearProducto } from "../../services/productos";
 import "./style.css";
 
 const schema = yup
   .object({
     nombre: yup.string().required(),
     descripcion: yup.string().required(),
-    fecha_ingreso: yup.date().required(),
     proveedor: yup.string().required(),
     nit_proveedor: yup.string().required(),
     cantidad: yup.number().positive().integer().required(),
@@ -29,6 +28,7 @@ function FormCrearProducto() {
   });
 
   const onSubmit = async (data) => {
+    console.log(data);
     const {
       nombre,
       descripcion,
@@ -40,8 +40,7 @@ function FormCrearProducto() {
       precio_costo,
       precio_venta,
     } = data;
-    const res = await crearCategoria(data);
-    console.log(data);
+    const res = await crearProducto(data);
   };
 
   return (
@@ -57,18 +56,21 @@ function FormCrearProducto() {
         {/* <p>{errors.descripcion?.message}</p> */}
         <input
           {...register("fecha_ingreso")}
-          placeholder="fecha_ingreso"
+          placeholder="fecha_ingreso YY/MM/DD"
           className="input"
+          type={"date"}
         />
       </div>
+      {/* <p>{errors.fecha_ingreso?.message}</p> */}
       <div className="cont">
-        {/* <p>{errors.fecha_ingreso?.message}</p> */}
         <input
           {...register("proveedor")}
           placeholder="proveedor"
           className="input"
         />
+
         {/* <p>{errors.proveedor?.message}</p> */}
+
         <input
           {...register("nit_proveedor")}
           placeholder="nit_proveedor"
@@ -81,13 +83,14 @@ function FormCrearProducto() {
           className="input"
         />
       </div>
+      {/* <p>{errors.cantidad?.message}</p> */}
       <div className="cont">
-        {/* <p>{errors.cantidad?.message}</p> */}
         <input
           {...register("existencia")}
           placeholder="existencia"
           className="input"
         />
+
         {/* <p>{errors.existencia?.message}</p> */}
         <input
           {...register("precio_costo")}
@@ -102,7 +105,7 @@ function FormCrearProducto() {
         />
         {/* <p>{errors.precio_venta?.message}</p> */}
       </div>
-      <input type="submit" className="submit"/>
+      <input type="submit" className="submit" />
     </form>
   );
 }
