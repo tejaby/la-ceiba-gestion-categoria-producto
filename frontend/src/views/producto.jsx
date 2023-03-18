@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import FormCrearProducto from "../components/form/formCrearProducto";
-import { obtenerProductos } from "../services/productos";
+import { obtenerProductos, eliminarProducto } from "../services/productos";
 import ModeloTabla from "../components/createTable/modeloTabla";
 import moment from "moment";
 
@@ -14,6 +14,7 @@ function Categoria() {
     };
     getProductos();
   }, []);
+
   console.log(productos);
   const columns = React.useMemo(
     () => [
@@ -58,11 +59,25 @@ function Categoria() {
             Header: "Precio_venta",
             accessor: "precio_venta",
           },
+          {
+            Header: "Funciones",
+            accessor: (del) => {
+              return (
+                <button className="btn btn-danger" onClick={() => handleDelete(del.id_producto)}>
+                  delete
+                </button>
+              );
+            },
+          },
         ],
       },
     ],
     []
   );
+
+  const handleDelete = (id) => {
+    eliminarProducto(id).then((req) => console.log(req));
+  };
 
   return (
     <div>

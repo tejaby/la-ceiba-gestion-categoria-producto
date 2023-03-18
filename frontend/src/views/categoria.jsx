@@ -38,24 +38,25 @@ function Categoria() {
             Header: "Descripcion",
             accessor: "descripcion",
           },
-          // {
-          //   Header: "Acciones",
-          //   accessor: (id_categoria) => {
-          //     return (
-          //       <>
-          //         <a href="#" className="btn btn-danger" onSubmit={handleSubmit}>
-          //           <i onClick={() => onDelete(id_categoria)}>delete</i>
-          //         </a>
-                  
-          //       </>
-          //     );
-          //   },
-          // },
+          {
+            Header: "Funciones",
+            accessor: (del) => {
+              return (
+                <button className="btn btn-danger" onClick={() => handleDelete(del.id_categoria)}>
+                  delete
+                </button>
+              );
+            },
+          },
         ],
       },
     ],
     []
   );
+
+  const handleDelete = (id) => {
+    eliminarCategoria(id).then((req) => console.log(req));
+  };
 
   return (
     <div>
